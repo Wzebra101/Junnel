@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS Border</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --wood: #c98a4b;
+  --wood-dark: #a86d34;
+  --orange: #f26a1b;
+  --orange-deep: #c2480a;
+  --navy: #12234d;
+  --navy-deep: #0a1530;
+  --cream: #fbf3e4;
+  --paper: #fff9ee;
+  --line: #fffaf0;
+  --ink: #1c1511;
+  --display: "Anton", "Impact", "Arial Narrow", sans-serif;
+  --body: "Barlow", "Segoe UI", Arial, sans-serif;
+  --mono: "Consolas", "Menlo", "Courier New", monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  padding: 40px 18px 56px;
+  font-family: var(--body);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--ink);
+  background-color: var(--wood);
+  background-image:
+    repeating-linear-gradient(90deg, transparent 0 118px, rgba(60, 30, 10, 0.35) 118px 120px),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.05) 0 3px, transparent 3px 9px),
+    linear-gradient(180deg, rgba(255, 200, 120, 0.25), rgba(80, 40, 10, 0.25));
+  background-attachment: fixed;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  color: var(--orange-deep);
+}
+
+.shell {
+  max-width: 980px;
+  margin: 0 auto;
+  background: var(--cream);
+  box-shadow:
+    0 0 0 6px var(--line),
+    0 0 0 11px var(--navy-deep),
+    0 26px 44px rgba(10, 21, 48, 0.45);
+}
+
+.site-header {
+  position: relative;
+  overflow: hidden;
+  padding: 52px 28px 46px;
+  text-align: center;
+  color: var(--cream);
+  background: var(--navy);
+  border-bottom: 8px solid var(--orange);
+}
+
+.site-header::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 440px;
+  height: 440px;
+  border: 5px solid rgba(255, 250, 240, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.site-header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 5px;
+  background: rgba(255, 250, 240, 0.2);
+  transform: translateY(-50%);
+}
+
+.site-header > * {
+  position: relative;
+  z-index: 1;
+}
+
+.site-header h1 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 9vw, 5.4rem);
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-shadow: 4px 4px 0 var(--orange-deep);
+}
+
+.site-header p {
+  max-width: 36ch;
+  margin: 14px auto 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #ffd9b0;
+}
+
+.scoreboard {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 22px;
+  padding: 8px 20px;
+  font-family: var(--display);
+  letter-spacing: 0.06em;
+  color: #ffb21e;
+  background: #080808;
+  border: 3px solid var(--orange);
+  border-radius: 8px;
+}
+
+.scoreboard span {
+  font-size: 0.95rem;
+}
+
+.scoreboard strong {
+  font-size: 1.9rem;
+  font-weight: 400;
+  text-shadow: 0 0 10px rgba(255, 178, 30, 0.6);
+}
+
+.content {
+  padding: 44px 44px 12px;
+}
+
+.card {
+  position: relative;
+  margin-bottom: 34px;
+  padding: 26px 28px 8px;
+  background: var(--paper);
+  border: 3px solid var(--navy);
+  box-shadow: 7px 7px 0 var(--navy-deep);
+}
+
+.card h2 {
+  margin: -26px -28px 24px;
+  padding: 14px 56px 12px 28px;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 4vw, 2.1rem);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--cream);
+  background: var(--navy);
+  border-bottom: 6px solid var(--orange);
+  clip-path: polygon(0 0, 100% 0, calc(100% - 30px) 100%, 0 100%);
+}
+
+.card h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 26px 0 8px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.card h3::before {
+  content: "";
+  flex: none;
+  width: 16px;
+  height: 16px;
+  background: var(--orange);
+  border: 3px solid var(--ink);
+  border-radius: 50%;
+}
+
+.card p {
+  max-width: 72ch;
+  margin-bottom: 18px;
+}
+
+.card strong {
+  color: var(--navy);
+}
+
+.list {
+  margin: 0 0 22px;
+  list-style: none;
+  background: #fff;
+  border: 2px solid var(--navy);
+}
+
+.list li {
+  position: relative;
+  padding: 11px 18px 11px 46px;
+  border-bottom: 2px dotted rgba(18, 35, 77, 0.3);
+}
+
+.list li:last-child {
+  border-bottom: none;
+}
+
+.list li:nth-child(even) {
+  background: rgba(242, 106, 27, 0.08);
+}
+
+.list li::before {
+  content: "";
+  position: absolute;
+  left: 17px;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  background: var(--orange);
+  border: 3px solid var(--ink);
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+.table-wrap {
+  margin-bottom: 22px;
+  overflow-x: auto;
+  background: #fff;
+  border: 2px solid var(--navy);
+}
+
+table {
+  width: 100%;
+  min-width: 520px;
+  border-collapse: collapse;
+}
+
+th {
+  padding: 12px 14px;
+  font-family: var(--display);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-align: left;
+  color: var(--cream);
+  background: var(--navy);
+}
+
+td {
+  padding: 11px 14px;
+  vertical-align: top;
+  border-top: 2px solid rgba(18, 35, 77, 0.18);
+}
+
+tbody tr:nth-child(even) {
+  background: rgba(242, 106, 27, 0.09);
+}
+
+td:first-child {
+  font-weight: 700;
+  color: var(--navy);
+}
+
+code {
+  padding: 2px 7px;
+  font-family: var(--mono);
+  font-size: 0.92em;
+  color: var(--orange-deep);
+  background: rgba(18, 35, 77, 0.08);
+  border-radius: 4px;
+}
+
+pre {
+  margin: 0 0 22px;
+  padding: 18px 22px;
+  overflow-x: auto;
+  font-family: var(--mono);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--cream);
+  background: var(--navy-deep);
+  border-left: 8px solid var(--orange);
+}
+
+pre code {
+  padding: 0;
+  color: inherit;
+  background: none;
+}
+
+.callout {
+  margin: 0 0 22px;
+  padding: 16px 20px;
+  font-weight: 600;
+  background: #fff;
+  border: 2px solid var(--navy);
+  border-left: 10px solid var(--orange);
+}
+
+.motto {
+  margin: 6px 0 34px;
+  padding: 24px 28px;
+  font-family: var(--display);
+  font-size: clamp(1.3rem, 3.4vw, 1.9rem);
+  line-height: 1.3;
+  letter-spacing: 0.03em;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--cream);
+  background: var(--orange-deep);
+  border: 3px solid var(--ink);
+  box-shadow: 7px 7px 0 var(--navy-deep);
+}
+
+.ball {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle at 35% 30%, #ff9a52, var(--orange) 55%, var(--orange-deep));
+  border: 6px solid var(--ink);
+  border-radius: 50%;
+}
+
+.ball::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  background: var(--ink);
+  transform: translateX(-50%);
+}
+
+.ball::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 6px;
+  background: var(--ink);
+  transform: translateY(-50%);
+}
+
+.ball i {
+  position: absolute;
+  top: -25%;
+  width: 80%;
+  height: 150%;
+  border: 6px solid var(--ink);
+  border-radius: 50%;
+}
+
+.ball i:first-child {
+  left: -62%;
+}
+
+.ball i:last-child {
+  right: -62%;
+}
+
+.site-footer {
+  padding: 34px 32px 40px;
+  text-align: center;
+  color: var(--cream);
+  background: var(--navy-deep);
+  border-top: 8px solid var(--orange);
+}
+
+.footer-note {
+  margin-bottom: 24px;
+  font-family: var(--display);
+  font-size: 1.25rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.pager {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+}
+
+.btn {
+  display: inline-block;
+  min-width: 170px;
+  padding: 13px 34px;
+  font-family: var(--display);
+  font-size: 1.2rem;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: var(--cream);
+  border: 3px solid var(--ink);
+  border-radius: 999px;
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.55);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-next {
+  color: var(--ink);
+  background: var(--orange);
+}
+
+.btn:hover,
+.btn:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 0 rgba(0, 0, 0, 0.55);
+}
+
+.btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.55);
+}
+
+.btn:focus-visible {
+  outline: 3px solid #ffb21e;
+  outline-offset: 3px;
+}
+
+@media (max-width: 680px) {
+  body {
+    padding: 22px 14px 40px;
+  }
+
+  .content {
+    padding: 30px 16px 6px;
+  }
+
+  .card {
+    padding: 22px 16px 4px;
+  }
+
+  .card h2 {
+    margin: -22px -16px 20px;
+    padding: 12px 40px 10px 16px;
+  }
+
+  .site-header {
+    padding: 40px 18px 36px;
+  }
+
+  .site-footer {
+    padding: 28px 16px 34px;
+  }
+
+  .btn {
+    min-width: 140px;
+    padding: 12px 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .btn {
+    transition: none;
+  }
+}
+
+.demo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 22px;
+  margin-bottom: 24px;
+}
+
+.demo-box {
+  padding: 26px 14px;
+  font-weight: 700;
+  text-align: center;
+  background: #fff;
+}
+
+.demo-box small {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--navy);
+}
+
+.b-solid {
+  border: 8px solid var(--navy);
+}
+
+.b-dashed {
+  border: 8px dashed var(--navy);
+}
+
+.b-dotted {
+  border: 8px dotted var(--orange-deep);
+}
+
+.b-double {
+  border: 10px double var(--navy);
+}
+
+.b-groove {
+  border: 12px groove var(--orange);
+}
+
+.b-ridge {
+  border: 12px ridge var(--orange);
+}
+
+.b-inset {
+  border: 12px inset var(--orange-deep);
+}
+
+.b-outset {
+  border: 12px outset var(--orange-deep);
+}
+
+.w-thin {
+  border: thin solid var(--navy);
+}
+
+.w-medium {
+  border: medium solid var(--navy);
+}
+
+.w-thick {
+  border: thick solid var(--navy);
+}
+
+.w-custom {
+  border: 16px solid var(--orange);
+}
+
+.s-top {
+  border-top: 14px solid var(--orange);
+}
+
+.s-bottom {
+  border-bottom: 14px solid var(--orange);
+}
+
+.s-left {
+  border-left: 14px solid var(--orange);
+}
+
+.s-right {
+  border-right: 14px solid var(--orange);
+}
+
+.s-mixed {
+  border-style: solid;
+  border-width: 4px 12px 20px 28px;
+  border-color: var(--orange) var(--navy) var(--orange) var(--navy);
+}
+
+.r-square {
+  border: 6px solid var(--navy);
+  border-radius: 0;
+}
+
+.r-soft {
+  border: 6px solid var(--navy);
+  border-radius: 18px;
+}
+
+.r-pill {
+  border: 6px solid var(--navy);
+  border-radius: 999px;
+}
+
+.plain {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  background: none;
+}
+
+.plain .ball {
+  width: 120px;
+  height: 120px;
+}
+  </style>
+</head>
+<body>
+
+<div class="shell">
+
+  <header class="site-header">
+    <div class="scoreboard"><span>Page</span><strong>5</strong><span>of 8</span></div>
+    <h1>CSS Border</h1>
+    <p>Draw the court lines, one border at a time.</p>
+  </header>
+
+  <main class="content">
+
+<section class="card">
+  <h2>What Is a Border?</h2>
+
+  <p>A CSS border is the line drawn around an element. On a basketball court, borders are everywhere: the sideline, the baseline, the free-throw line, and the three-point arc. Each line tells the players where they can go and what counts.</p>
+
+  <p>With CSS you control three things about every border: its width, its style, and its color.</p>
+</section>
+
+<section class="card">
+  <h2>Border Styles</h2>
+
+  <p>The <code>border-style</code> property changes how the line looks. Here are the eight most common styles, each named after a part of the game.</p>
+
+  <div class="demo-grid">
+    <div class="demo-box b-solid">The Sideline<small>border-style: solid</small></div>
+    <div class="demo-box b-dashed">Free-Throw Line<small>border-style: dashed</small></div>
+    <div class="demo-box b-dotted">Dribble Trail<small>border-style: dotted</small></div>
+    <div class="demo-box b-double">Double Team<small>border-style: double</small></div>
+    <div class="demo-box b-groove">Hardwood Groove<small>border-style: groove</small></div>
+    <div class="demo-box b-ridge">Rim Ridge<small>border-style: ridge</small></div>
+    <div class="demo-box b-inset">Pressed Floor<small>border-style: inset</small></div>
+    <div class="demo-box b-outset">Raised Backboard<small>border-style: outset</small></div>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Border Width and Color</h2>
+
+  <p>The <code>border-width</code> property sets how thick the line is. You can use keywords like <code>thin</code>, <code>medium</code>, and <code>thick</code>, or an exact size like <code>16px</code>. The <code>border-color</code> property sets the color.</p>
+
+  <div class="demo-grid">
+    <div class="demo-box w-thin">Jump Ball<small>border-width: thin</small></div>
+    <div class="demo-box w-medium">Tip-Off<small>border-width: medium</small></div>
+    <div class="demo-box w-thick">Full Court Press<small>border-width: thick</small></div>
+    <div class="demo-box w-custom">Buzzer Beater<small>border-width: 16px</small></div>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Border Sides</h2>
+
+  <p>You can style each side separately with <code>border-top</code>, <code>border-right</code>, <code>border-bottom</code>, and <code>border-left</code>. You can also give the four sides different widths and colors in one rule.</p>
+
+  <div class="demo-grid">
+    <div class="demo-box s-top">Top of the Key<small>border-top</small></div>
+    <div class="demo-box s-bottom">Baseline<small>border-bottom</small></div>
+    <div class="demo-box s-left">Left Wing<small>border-left</small></div>
+    <div class="demo-box s-right">Right Wing<small>border-right</small></div>
+    <div class="demo-box s-mixed">Four Different Sides<small>border-width: 4px 12px 20px 28px</small></div>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Rounded Borders</h2>
+
+  <p>The <code>border-radius</code> property rounds the corners. A small radius softens the box, and a radius of <code>50%</code> on a square turns it into a perfect circle, which is exactly how you draw a basketball.</p>
+
+  <div class="demo-grid">
+    <div class="demo-box r-square">Square Corners<small>border-radius: 0</small></div>
+    <div class="demo-box r-soft">Soft Corners<small>border-radius: 18px</small></div>
+    <div class="demo-box r-pill">Pill Shape<small>border-radius: 999px</small></div>
+    <div class="demo-box plain">
+      <span class="ball"><i></i><i></i></span>
+      <small>border-radius: 50%</small>
+    </div>
+  </div>
+</section>
+
+<section class="card">
+  <h2>The Border Shorthand</h2>
+
+  <p>Instead of writing three separate properties, you can combine them in one line. The order is width, then style, then color.</p>
+
+<pre><code>border: 4px solid #f26a1b;
+
+border-width: 4px;
+border-style: solid;
+border-color: #f26a1b;</code></pre>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Property</th>
+          <th>What It Controls</th>
+          <th>On the Court</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>border-width</td>
+          <td>How thick the line is</td>
+          <td>How bold the painted line looks</td>
+        </tr>
+        <tr>
+          <td>border-style</td>
+          <td>The pattern of the line</td>
+          <td>Solid sideline or dashed free-throw line</td>
+        </tr>
+        <tr>
+          <td>border-color</td>
+          <td>The color of the line</td>
+          <td>The team colors on the floor</td>
+        </tr>
+        <tr>
+          <td>border-radius</td>
+          <td>How round the corners are</td>
+          <td>From square court to round ball</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Conclusion</h2>
+
+  <p>Borders do more than decorate. They organize a page the same way painted lines organize a court. With the right width, style, color, and radius, you can mark every area clearly and make your design look game-ready.</p>
+</section>
+
+<p class="motto">Stay inside the lines, then style them.</p>
+
+  </main>
+
+  <footer class="site-footer">
+    <p class="footer-note">CSS Border Activity: Basketball Edition</p>
+    <div class="pager">
+      <a class="btn" href="page4.html">Previous</a>
+      <a class="btn btn-next" href="page6.html">Next</a>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+                                                                                 </html>
