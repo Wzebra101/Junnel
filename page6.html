@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS Background</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --wood: #c98a4b;
+  --wood-dark: #a86d34;
+  --orange: #f26a1b;
+  --orange-deep: #c2480a;
+  --navy: #12234d;
+  --navy-deep: #0a1530;
+  --cream: #fbf3e4;
+  --paper: #fff9ee;
+  --line: #fffaf0;
+  --ink: #1c1511;
+  --display: "Anton", "Impact", "Arial Narrow", sans-serif;
+  --body: "Barlow", "Segoe UI", Arial, sans-serif;
+  --mono: "Consolas", "Menlo", "Courier New", monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  padding: 40px 18px 56px;
+  font-family: var(--body);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--ink);
+  background-color: var(--wood);
+  background-image:
+    repeating-linear-gradient(90deg, transparent 0 118px, rgba(60, 30, 10, 0.35) 118px 120px),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.05) 0 3px, transparent 3px 9px),
+    linear-gradient(180deg, rgba(255, 200, 120, 0.25), rgba(80, 40, 10, 0.25));
+  background-attachment: fixed;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  color: var(--orange-deep);
+}
+
+.shell {
+  max-width: 980px;
+  margin: 0 auto;
+  background: var(--cream);
+  box-shadow:
+    0 0 0 6px var(--line),
+    0 0 0 11px var(--navy-deep),
+    0 26px 44px rgba(10, 21, 48, 0.45);
+}
+
+.site-header {
+  position: relative;
+  overflow: hidden;
+  padding: 52px 28px 46px;
+  text-align: center;
+  color: var(--cream);
+  background: var(--navy);
+  border-bottom: 8px solid var(--orange);
+}
+
+.site-header::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 440px;
+  height: 440px;
+  border: 5px solid rgba(255, 250, 240, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.site-header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 5px;
+  background: rgba(255, 250, 240, 0.2);
+  transform: translateY(-50%);
+}
+
+.site-header > * {
+  position: relative;
+  z-index: 1;
+}
+
+.site-header h1 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 9vw, 5.4rem);
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-shadow: 4px 4px 0 var(--orange-deep);
+}
+
+.site-header p {
+  max-width: 36ch;
+  margin: 14px auto 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #ffd9b0;
+}
+
+.scoreboard {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 22px;
+  padding: 8px 20px;
+  font-family: var(--display);
+  letter-spacing: 0.06em;
+  color: #ffb21e;
+  background: #080808;
+  border: 3px solid var(--orange);
+  border-radius: 8px;
+}
+
+.scoreboard span {
+  font-size: 0.95rem;
+}
+
+.scoreboard strong {
+  font-size: 1.9rem;
+  font-weight: 400;
+  text-shadow: 0 0 10px rgba(255, 178, 30, 0.6);
+}
+
+.content {
+  padding: 44px 44px 12px;
+}
+
+.card {
+  position: relative;
+  margin-bottom: 34px;
+  padding: 26px 28px 8px;
+  background: var(--paper);
+  border: 3px solid var(--navy);
+  box-shadow: 7px 7px 0 var(--navy-deep);
+}
+
+.card h2 {
+  margin: -26px -28px 24px;
+  padding: 14px 56px 12px 28px;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 4vw, 2.1rem);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--cream);
+  background: var(--navy);
+  border-bottom: 6px solid var(--orange);
+  clip-path: polygon(0 0, 100% 0, calc(100% - 30px) 100%, 0 100%);
+}
+
+.card h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 26px 0 8px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.card h3::before {
+  content: "";
+  flex: none;
+  width: 16px;
+  height: 16px;
+  background: var(--orange);
+  border: 3px solid var(--ink);
+  border-radius: 50%;
+}
+
+.card p {
+  max-width: 72ch;
+  margin-bottom: 18px;
+}
+
+.card strong {
+  color: var(--navy);
+}
+
+.list {
+  margin: 0 0 22px;
+  list-style: none;
+  background: #fff;
+  border: 2px solid var(--navy);
+}
+
+.list li {
+  position: relative;
+  padding: 11px 18px 11px 46px;
+  border-bottom: 2px dotted rgba(18, 35, 77, 0.3);
+}
+
+.list li:last-child {
+  border-bottom: none;
+}
+
+.list li:nth-child(even) {
+  background: rgba(242, 106, 27, 0.08);
+}
+
+.list li::before {
+  content: "";
+  position: absolute;
+  left: 17px;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  background: var(--orange);
+  border: 3px solid var(--ink);
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+.table-wrap {
+  margin-bottom: 22px;
+  overflow-x: auto;
+  background: #fff;
+  border: 2px solid var(--navy);
+}
+
+table {
+  width: 100%;
+  min-width: 520px;
+  border-collapse: collapse;
+}
+
+th {
+  padding: 12px 14px;
+  font-family: var(--display);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-align: left;
+  color: var(--cream);
+  background: var(--navy);
+}
+
+td {
+  padding: 11px 14px;
+  vertical-align: top;
+  border-top: 2px solid rgba(18, 35, 77, 0.18);
+}
+
+tbody tr:nth-child(even) {
+  background: rgba(242, 106, 27, 0.09);
+}
+
+td:first-child {
+  font-weight: 700;
+  color: var(--navy);
+}
+
+code {
+  padding: 2px 7px;
+  font-family: var(--mono);
+  font-size: 0.92em;
+  color: var(--orange-deep);
+  background: rgba(18, 35, 77, 0.08);
+  border-radius: 4px;
+}
+
+pre {
+  margin: 0 0 22px;
+  padding: 18px 22px;
+  overflow-x: auto;
+  font-family: var(--mono);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--cream);
+  background: var(--navy-deep);
+  border-left: 8px solid var(--orange);
+}
+
+pre code {
+  padding: 0;
+  color: inherit;
+  background: none;
+}
+
+.callout {
+  margin: 0 0 22px;
+  padding: 16px 20px;
+  font-weight: 600;
+  background: #fff;
+  border: 2px solid var(--navy);
+  border-left: 10px solid var(--orange);
+}
+
+.motto {
+  margin: 6px 0 34px;
+  padding: 24px 28px;
+  font-family: var(--display);
+  font-size: clamp(1.3rem, 3.4vw, 1.9rem);
+  line-height: 1.3;
+  letter-spacing: 0.03em;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--cream);
+  background: var(--orange-deep);
+  border: 3px solid var(--ink);
+  box-shadow: 7px 7px 0 var(--navy-deep);
+}
+
+.ball {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle at 35% 30%, #ff9a52, var(--orange) 55%, var(--orange-deep));
+  border: 6px solid var(--ink);
+  border-radius: 50%;
+}
+
+.ball::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  background: var(--ink);
+  transform: translateX(-50%);
+}
+
+.ball::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 6px;
+  background: var(--ink);
+  transform: translateY(-50%);
+}
+
+.ball i {
+  position: absolute;
+  top: -25%;
+  width: 80%;
+  height: 150%;
+  border: 6px solid var(--ink);
+  border-radius: 50%;
+}
+
+.ball i:first-child {
+  left: -62%;
+}
+
+.ball i:last-child {
+  right: -62%;
+}
+
+.site-footer {
+  padding: 34px 32px 40px;
+  text-align: center;
+  color: var(--cream);
+  background: var(--navy-deep);
+  border-top: 8px solid var(--orange);
+}
+
+.footer-note {
+  margin-bottom: 24px;
+  font-family: var(--display);
+  font-size: 1.25rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.pager {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+}
+
+.btn {
+  display: inline-block;
+  min-width: 170px;
+  padding: 13px 34px;
+  font-family: var(--display);
+  font-size: 1.2rem;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: var(--cream);
+  border: 3px solid var(--ink);
+  border-radius: 999px;
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.55);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-next {
+  color: var(--ink);
+  background: var(--orange);
+}
+
+.btn:hover,
+.btn:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 0 rgba(0, 0, 0, 0.55);
+}
+
+.btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.55);
+}
+
+.btn:focus-visible {
+  outline: 3px solid #ffb21e;
+  outline-offset: 3px;
+}
+
+@media (max-width: 680px) {
+  body {
+    padding: 22px 14px 40px;
+  }
+
+  .content {
+    padding: 30px 16px 6px;
+  }
+
+  .card {
+    padding: 22px 16px 4px;
+  }
+
+  .card h2 {
+    margin: -22px -16px 20px;
+    padding: 12px 40px 10px 16px;
+  }
+
+  .site-header {
+    padding: 40px 18px 36px;
+  }
+
+  .site-footer {
+    padding: 28px 16px 34px;
+  }
+
+  .btn {
+    min-width: 140px;
+    padding: 12px 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .btn {
+    transition: none;
+  }
+}
+
+:root {
+  --tile: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='14' fill='%23f26a1b' stroke='%23140f0b' stroke-width='2'/%3E%3Cpath d='M6 20h28M20 6v28' stroke='%23140f0b' stroke-width='2'/%3E%3C/svg%3E");
+}
+
+.swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.swatch {
+  display: grid;
+  align-content: end;
+  min-height: 120px;
+  padding: 12px;
+  font-weight: 700;
+  border: 3px solid var(--ink);
+}
+
+.swatch small {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+.sw-orange {
+  background-color: var(--orange);
+}
+
+.sw-navy {
+  color: var(--cream);
+  background-color: var(--navy);
+}
+
+.sw-cream {
+  background-color: var(--cream);
+}
+
+.sw-wood {
+  background-color: var(--wood);
+}
+
+.bg-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.bg-box {
+  display: grid;
+  align-content: end;
+  height: 170px;
+  padding: 10px;
+  background-color: #fff7e8;
+  background-image: var(--tile);
+  border: 3px solid var(--ink);
+}
+
+.bg-box span {
+  justify-self: start;
+  padding: 4px 10px;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: var(--cream);
+  background: var(--navy-deep);
+}
+
+.grad-linear {
+  background: linear-gradient(135deg, var(--navy), var(--orange));
+}
+
+.grad-radial {
+  background: radial-gradient(circle at 50% 40%, #ffe9b8, var(--orange) 60%, var(--orange-deep));
+}
+
+.grad-floor {
+  background: repeating-linear-gradient(90deg, var(--wood) 0 54px, var(--wood-dark) 54px 56px);
+}
+
+.repeat {
+  background-repeat: repeat;
+}
+
+.repeat-x {
+  background-repeat: repeat-x;
+}
+
+.repeat-y {
+  background-repeat: repeat-y;
+}
+
+.no-repeat {
+  background-repeat: no-repeat;
+}
+
+.size-cover {
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.size-contain {
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.size-small {
+  background-size: 20px;
+}
+
+.size-big {
+  background-size: 80px;
+}
+
+.pos-center {
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.pos-top-left {
+  background-repeat: no-repeat;
+  background-position: top left;
+}
+
+.pos-bottom-right {
+  background-repeat: no-repeat;
+  background-position: bottom right;
+}
+
+.fixed-band {
+  display: grid;
+  place-items: center;
+  height: 200px;
+  margin-bottom: 22px;
+  font-family: var(--display);
+  font-size: clamp(1.4rem, 4vw, 2.2rem);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--cream);
+  text-shadow: 3px 3px 0 var(--ink);
+  background: linear-gradient(115deg, var(--navy) 0 25%, var(--orange) 25% 50%, var(--cream) 50% 75%, var(--wood) 75%);
+  background-attachment: fixed;
+  border: 3px solid var(--ink);
+}
+
+.court-demo {
+  position: relative;
+  display: grid;
+  align-content: end;
+  height: 260px;
+  margin-bottom: 22px;
+  padding: 12px;
+  background:
+    radial-gradient(circle, transparent 0 56px, var(--line) 56px 60px, transparent 60px),
+    linear-gradient(90deg, transparent calc(50% - 2px), var(--line) calc(50% - 2px) calc(50% + 2px), transparent calc(50% + 2px)),
+    repeating-linear-gradient(90deg, transparent 0 78px, rgba(60, 30, 10, 0.35) 78px 80px),
+    var(--wood);
+  border: 5px solid var(--line);
+  outline: 3px solid var(--ink);
+}
+
+.court-demo span {
+  justify-self: start;
+  padding: 4px 10px;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: var(--cream);
+  background: var(--navy-deep);
+}
+  </style>
+</head>
+<body>
+
+<div class="shell">
+
+  <header class="site-header">
+    <div class="scoreboard"><span>Page</span><strong>6</strong><span>of 8</span></div>
+    <h1>CSS Background</h1>
+    <p>Lay down the hardwood and light up the arena.</p>
+  </header>
+
+  <main class="content">
+
+<section class="card">
+  <h2>What Is a Background?</h2>
+
+  <p>The background is the surface behind an element's content. Think of it as the hardwood under the players, the paint inside the key, or the lights in the arena. CSS lets you set a color, an image, a gradient, or all of them layered together.</p>
+
+  <p>In this page, the wooden floor behind the whole site is made with CSS gradients alone, with no image file at all.</p>
+</section>
+
+<section class="card">
+  <h2>Background Color</h2>
+
+  <p>The <code>background-color</code> property fills the whole box with one solid color. These are the team colors used across this site.</p>
+
+  <div class="swatches">
+    <div class="swatch sw-orange">Ball Orange<small>#f26a1b</small></div>
+    <div class="swatch sw-navy">Court Navy<small>#12234d</small></div>
+    <div class="swatch sw-cream">Jersey Cream<small>#fbf3e4</small></div>
+    <div class="swatch sw-wood">Hardwood<small>#c98a4b</small></div>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Background Gradients</h2>
+
+  <p>A gradient blends colors smoothly and counts as a background image. Use <code>linear-gradient</code> for straight blends, <code>radial-gradient</code> for spotlights, and <code>repeating-linear-gradient</code> for planks of hardwood.</p>
+
+  <div class="bg-grid">
+    <div class="bg-box grad-linear"><span>linear-gradient</span></div>
+    <div class="bg-box grad-radial"><span>radial-gradient</span></div>
+    <div class="bg-box grad-floor"><span>repeating-linear-gradient</span></div>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Background Repeat</h2>
+
+  <p>When an image is smaller than its box, the <code>background-repeat</code> property decides whether it tiles. Each box below uses a small basketball as its background image.</p>
+
+  <div class="bg-grid">
+    <div class="bg-box repeat"><span>repeat</span></div>
+    <div class="bg-box repeat-x"><span>repeat-x</span></div>
+    <div class="bg-box repeat-y"><span>repeat-y</span></div>
+    <div class="bg-box no-repeat"><span>no-repeat</span></div>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Background Size</h2>
+
+  <p>The <code>background-size</code> property scales the image. Use <code>cover</code> to fill the box completely, <code>contain</code> to fit the whole image inside, or exact lengths like <code>20px</code>.</p>
+
+  <div class="bg-grid">
+    <div class="bg-box size-cover"><span>cover</span></div>
+    <div class="bg-box size-contain"><span>contain</span></div>
+    <div class="bg-box size-small"><span>20px</span></div>
+    <div class="bg-box size-big"><span>80px</span></div>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Background Position</h2>
+
+  <p>The <code>background-position</code> property places the image inside the box, much like choosing where a player stands on the floor.</p>
+
+  <div class="bg-grid">
+    <div class="bg-box pos-center"><span>center</span></div>
+    <div class="bg-box pos-top-left"><span>top left</span></div>
+    <div class="bg-box pos-bottom-right"><span>bottom right</span></div>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Background Attachment</h2>
+
+  <p>With <code>background-attachment: fixed</code>, the background stays put while the page scrolls. Scroll up and down and watch the colored stripes in the band below slide behind the text. The hardwood floor behind this whole page uses the same trick.</p>
+
+  <div class="fixed-band">Fixed Background</div>
+</section>
+
+<section class="card">
+  <h2>Layering a Court</h2>
+
+  <p>You can stack several backgrounds in one rule by separating them with commas. The first layer sits on top. Here a center circle, a half-court line, and wooden planks are layered over a hardwood color.</p>
+
+  <div class="court-demo"><span>Multiple backgrounds</span></div>
+
+<pre><code>background:
+  radial-gradient(circle, transparent 0 56px, #fffaf0 56px 60px, transparent 60px),
+  linear-gradient(90deg, transparent calc(50% - 2px), #fffaf0 calc(50% - 2px) calc(50% + 2px), transparent calc(50% + 2px)),
+  #c98a4b;</code></pre>
+</section>
+
+<section class="card">
+  <h2>Quick Reference</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Property</th>
+          <th>Example Value</th>
+          <th>On the Court</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>background-color</td>
+          <td><code>#c98a4b</code></td>
+          <td>The color of the floor</td>
+        </tr>
+        <tr>
+          <td>background-image</td>
+          <td><code>url(ball.png)</code></td>
+          <td>A logo painted at center court</td>
+        </tr>
+        <tr>
+          <td>background-repeat</td>
+          <td><code>no-repeat</code></td>
+          <td>One logo, not a hundred</td>
+        </tr>
+        <tr>
+          <td>background-size</td>
+          <td><code>cover</code></td>
+          <td>Stretch the paint to fill the key</td>
+        </tr>
+        <tr>
+          <td>background-position</td>
+          <td><code>center</code></td>
+          <td>Where the logo is placed</td>
+        </tr>
+        <tr>
+          <td>background-attachment</td>
+          <td><code>fixed</code></td>
+          <td>The floor stays while you move</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Conclusion</h2>
+
+  <p>A good background sets the mood before a single word is read, just like a packed arena before tip-off. By combining colors, gradients, images, and positioning, you can build a whole court out of CSS.</p>
+</section>
+
+<p class="motto">Great games start with a great floor.</p>
+
+  </main>
+
+  <footer class="site-footer">
+    <p class="footer-note">CSS Background Activity: Basketball Edition</p>
+    <div class="pager">
+      <a class="btn" href="page5.html">Previous</a>
+      <a class="btn btn-next" href="page7.html">Next</a>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+  </html>
